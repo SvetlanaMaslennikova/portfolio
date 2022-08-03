@@ -1,0 +1,279 @@
+﻿1. Создать каталоги students и mentors в домашней директории, а в них — текстовые файлы students_list.txt и mentors_list.txt соответственно.
+
+linux@linux-VirtualBox:/home$ cd ~
+linux@linux-VirtualBox:~$ ls -l
+итого 32
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Видео
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Документы
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Загрузки
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Изображения
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Музыка
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Общедоступные
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40 'Рабочий стол'
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Шаблоны
+
+linux@linux-VirtualBox:~$ mkdir students mentors
+linux@linux-VirtualBox:~$ ls -l
+итого 40
+drwxrwxr-x 2 linux linux 4096 фев 25 11:30  mentors
+drwxrwxr-x 2 linux linux 4096 фев 25 11:30  students
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Видео
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Документы
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Загрузки
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Изображения
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Музыка
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Общедоступные
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40 'Рабочий стол'
+drwxr-xr-x 2 linux linux 4096 фев 25 09:40  Шаблоны
+
+linux@linux-VirtualBox:~$ cd students
+linux@linux-VirtualBox:~/students$ touch students_list.txt
+linux@linux-VirtualBox:~/students$ cd ..
+linux@linux-VirtualBox:~$ cd mentors/
+linux@linux-VirtualBox:~/mentors$ touch mentors_list.txt
+linux@linux-VirtualBox:~/mentors$ cd ~
+linux@linux-VirtualBox:~$ tree
+.
+├── mentors
+│   └── mentors_list.txt
+├── students
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+10 directories, 2 files
+linux@linux-VirtualBox:~$ 
+
+
+2. Открыть созданные в п.1 файлы в любом текстовом редакторе и заполнить их (в соответствии с названием) списком Ваших одногруппников и наставников на данном потоке.
+
+linux@linux-VirtualBox:~$ cd students/
+linux@linux-VirtualBox:~/students$ cat students_list.txt
+Мигалев Яков
+Андрей Вячеславович Максимов
+Олег Комаров
+Сергей Шумаков
+Александра Метелева
+Константин Сучков
+Гордей Шаповалов
+Иван Куракин
+Евгений Демидов
+Arman Abzelev
+Антон Стогов
+ТимофейСергеевич Фетисов
+Никита Агапов
+Александр Блишун
+Мария Доброскокина
+Роман
+Сергей Стриж
+Timur Muratov
+Макс Шихов
+Руслан Молодцов
+Виталий Вощенко
+Елена Бурдинская
+Олег Гладкий
+Александр Мизяков
+Антон Кутявин
+Павел Чунин
+Murad Mirzaev
+Хондамир Рахматов
+Антон Григоренко
+Egor Turtsakov
+Вячеслав Быков
+Алексей Зотов
+
+linux@linux-VirtualBox:~/students$ cd ..
+linux@linux-VirtualBox:~$ cd mentors/
+linux@linux-VirtualBox:~/mentors$ cat mentors_list.txt
+Артур Правдивцев
+
+
+3. Переместите файл mentors_list.txt в папку students.
+
+linux@linux-VirtualBox:~$ tree
+.
+├── mentors
+│   └── mentors_list.txt
+├── students
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+10 directories, 2 files
+
+linux@linux-VirtualBox:~$ mv mentors/mentors_list.txt students/
+linux@linux-VirtualBox:~$ tree
+.
+├── mentors
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+10 directories, 2 files
+
+
+4. Удалите папку mentors.
+
+linux@linux-VirtualBox:~$ tree
+.
+├── mentors
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+10 directories, 2 files
+linux@linux-VirtualBox:~$ rm mentors/ -r
+linux@linux-VirtualBox:~$ tree
+.
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+9 directories, 2 files
+
+5. Переименуйте папку students в students_and_mentors.
+
+linux@linux-VirtualBox:~$ tree
+.
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+9 directories, 2 files
+linux@linux-VirtualBox:~$ mv students/ students_and_mentors
+linux@linux-VirtualBox:~$ tree
+.
+├── students_and_mentors
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+9 directories, 2 files
+linux@linux-VirtualBox:~$ 
+
+
+6. Удалите папку students_and_mentors вместе с содержимым.
+
+linux@linux-VirtualBox:~$ tree
+.
+├── students_and_mentors
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+9 directories, 2 files
+linux@linux-VirtualBox:~$ rm students_and_mentors/ -rf
+linux@linux-VirtualBox:~$ tree
+.
+├── Видео
+├── Документы
+├── Загрузки
+├── Изображения
+├── Музыка
+├── Общедоступные
+├── Рабочий стол
+└── Шаблоны
+
+8 directories, 0 files
+
+7. Подключитесь к машине с Linux по протоколу SSH.
+
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.13.0-30-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+linux@linux-VirtualBox:~$ whoami
+linux
+linux@linux-VirtualBox:~$ hostname
+linux-VirtualBox
+linux@linux-VirtualBox:~$ hostname -I
+192.168.0.187
+linux@linux-VirtualBox:~$
+
+
+8. (*) Используя дополнительный материал, настроить авторизацию по SSH с использованием ключей.
+
+Using username "linux".
+Authenticating with public key "rsa-key-20220225" from agent
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.13.0-30-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Fri Feb 25 14:56:04 2022 from 192.168.0.151
+linux@linux-VirtualBox:~$

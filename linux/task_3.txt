@@ -1,0 +1,133 @@
+1. Управление пользователями:
+a) создать нового пользователя;
+
+linux@linux-VirtualBox:~$ sudo adduser user_1
+[sudo] пароль для linux: 
+Добавляется пользователь «user_1» ...
+Добавляется новая группа «user_1» (1001) ...
+Добавляется новый пользователь «user_1» (1001) в группу «user_1» ...
+Создаётся домашний каталог «/home/user_1» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль : 
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе user_1
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: 
+	Номер комнаты []: 
+	Рабочий телефон []: 
+	Домашний телефон []: 
+	Другое []: 
+Данная информация корректна? [Y/n] 
+linux@linux-VirtualBox:~$ 
+
+b) убедиться, что информация о нем появилась в соответствующих файлах в системе;
+
+linux@linux-VirtualBox:~$ ls /home
+linux  mentors  student  user_1
+
+linux@linux-VirtualBox:~$ more /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+user_1:x:1001:1001:,,,:/home/user_1:/bin/bash
+linux@linux-VirtualBox:~$ 
+
+c) удалить созданного пользователя;
+
+linux@linux-VirtualBox:~$ sudo userdel -r user_1
+userdel: почтовый ящик user_1 (/var/mail/user_1) не найден
+linux@linux-VirtualBox:~$ ls /home
+linux  mentors  student
+linux@linux-VirtualBox:~$ 
+
+2. Управление группами:
+a) создать группу;
+
+linux@linux-VirtualBox:~$ sudo groupadd dev_team
+linux@linux-VirtualBox:~$ tail /etc/group
+pulse-access:x:129:
+gdm:x:130:
+sssd:x:131:
+lxd:x:132:linux
+linux:x:1000:
+sambashare:x:133:linux
+systemd-coredump:x:999:
+vboxsf:x:998:
+user_1:x:1001:
+dev_team:x:1002:
+linux@linux-VirtualBox:~$ 
+
+b) попрактиковаться в смене групп у пользователей;
+
+inux@linux-VirtualBox:~$ groups user_1
+user_1 : user_1 dev_team
+linux@linux-VirtualBox:~$ sudo usermod -aG adm  user_1
+linux@linux-VirtualBox:~$ sudo usermod -aG sudo  user_1
+linux@linux-VirtualBox:~$ groups user_1
+user_1 : user_1 adm sudo dev_team
+linux@linux-VirtualBox:~$ sudo deluser user_1 adm
+Удаляется пользователь «user_1» из группы «adm» ...
+Готово.
+linux@linux-VirtualBox:~$ sudo deluser user_1 sudo
+Удаляется пользователь «user_1» из группы «sudo» ...
+Готово.
+
+c) добавить пользователя в группу, не меняя основной;
+
+linux@linux-VirtualBox:~$ sudo usermod -aG dev_team user_1
+linux@linux-VirtualBox:~$ tail /etc/group
+pulse-access:x:129:
+gdm:x:130:
+sssd:x:131:
+lxd:x:132:linux
+linux:x:1000:
+sambashare:x:133:linux
+systemd-coredump:x:999:
+vboxsf:x:998:
+user_1:x:1001:
+dev_team:x:1002:user_1
+linux@linux-VirtualBox:~$ 
+
+d) удалить пользователя из группы.
+
+linux@linux-VirtualBox:~$ sudo deluser user_1 dev_team
+Удаляется пользователь «user_1» из группы «dev_team» ...
+Готово.
+linux@linux-VirtualBox:~$ groups user_1
+user_1 : user_1
+linux@linux-VirtualBox:~$ 
+
+3. Создать пользователя с правами суперпользователя. Проверить результат.
+
+linux@linux-VirtualBox:~$ sudo usermod -aG sudo  user_1
+linux@linux-VirtualBox:~$ groups user_1
+user_1 : user_1 sudo
+linux@linux-VirtualBox:~$ su user_1
+Пароль: 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+user_1@linux-VirtualBox:/home/linux$ whoami
+user_1
+user_1@linux-VirtualBox:/home/linux$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease                     
+Сущ:4 http://security.ubuntu.com/ubuntu focal-security InRelease                        
+Чтение списков пакетов… Готово            
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Может быть обновлено 8 пакетов. Запустите «apt list --upgradable» для их показа.
+user_1@linux-VirtualBox:/home/linux$ 
+
+4. * Используя дополнительные материалы, выдать одному из созданных пользователей право на выполнение ряда команд, требующих прав суперпользователя (команды выбираем на своё усмотрение).
+
+user_1@linux-VirtualBox:/home/linux$ sudo -s
+root@linux-VirtualBox:/home/linux# apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease                        
+Сущ:4 http://security.ubuntu.com/ubuntu focal-security InRelease                           
+Чтение списков пакетов… Готово            
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Может быть обновлено 8 пакетов. Запустите «apt list --upgradable» для их показа.
+root@linux-VirtualBox:/home/linux# 
