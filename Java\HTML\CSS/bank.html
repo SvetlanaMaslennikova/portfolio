@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	do{
+	var deposit = +prompt("Введите сумму вклада");
+	    } while(isNaN(deposit) || deposit < 0 )
+	 
+	do{
+		var percent = +prompt("Введите процент");
+		} while(isNaN(percent) || percent < 0 )
+	 
+	
+    for (var i = 1; i <= 5; i++) {
+    	deposit = deposit + (deposit * percent / 100);
+    	deposit = parseInt(deposit);
+        document.write("Сумма вклада по итогам " + i + "-го года равна " + deposit + "<br/>");
+    	}
+
+</script>

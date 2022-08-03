@@ -1,0 +1,67 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+    var answer = prompt ("Два конца, два кольца, посредине гвоздик.");
+    answer = answer.toLowerCase(); //преобразование строки в нижний регистр букв
+    if (answer == "ножницы") 
+        {
+        alert("Поздравляю, вы угадали!");
+        alert ("Игра окончена");
+        }
+
+    else 
+        {
+        alert ("Вы не угадали!");
+        alert ("Решите ещё три загадки");
+        
+
+        var answer1 = prompt ("Два братца в воду глядятся, век не сойдутся.");
+        answer1 = answer1.toLowerCase();
+        
+        if (answer1 == "берега") 
+            {
+            var n1 = 1;
+            alert("Поздравляю, вы угадали!");
+            }
+       
+        else 
+            {
+            n1 = 0;
+            alert ("Вы не угадали!");
+            }
+
+        var answer2 = prompt ("Летит, а не птица, воет, а не зверь.");
+        answer2 = answer2.toLowerCase();
+        
+        if (answer2 == "ветер") 
+            {
+            var n2 = 1;
+            alert("Поздравляю, вы угадали!");
+            }
+
+        else 
+            {
+            n2 = 0;
+            alert ("Вы не угадали!");
+            }
+
+        var answer3 = prompt ("Разноцветное коромысло над рекой повисло.");
+        answer3 = answer3.toLowerCase();
+       
+        if (answer3 == "радуга") 
+            {
+            var n3 = 1;
+            alert("Поздравляю, вы угадали!");
+            }
+       
+        else 
+            {
+            n3 = 0;
+            alert ("Вы не угадали!");
+            }
+
+        alert ("Игра окончена!");
+        alert ("Правильных ответов: " + (n1 + n2 + n3));
+    }
+
+</script>

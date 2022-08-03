@@ -1,0 +1,124 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	
+
+	/*  а) Функция, которая принимает в качестве параметра число n.
+	Результатом работы функции является массив из N элементов
+	со значениями 1, 2, 3… n. */
+
+	function generateNumberArray(length) {
+	    
+	    var array = [];
+	    
+	    for(var i = 1; i <= n; i++)
+	        array.push(i);
+	
+	    return array;
+	}
+	
+	var n = +prompt("Введите количество элементов массива ");
+	document.write("а) Значения функции: " + generateNumberArray(n) + "<br>");
+
+	// Функция создания рандомного массива
+	
+	function getRandomMass(userAnswer){
+	    
+	    var mass = [];
+	    
+	    for(i = 0; i < userAnswer; i++){
+	        var randomNumbers = parseInt(Math.random() * 10);
+	        mass.push(randomNumbers);
+	    }
+	
+	    return mass;
+	}
+
+	var mass = +prompt("Введите длинну вашего массива: ");
+	var randomMass = getRandomMass(mass);
+	document.write("Заданный массив = " + randomMass + "<br>");
+
+	/*b) Функция, которая принимает массив чисел. 
+ 	Результатом работы функции является сумма чисел этого массива. */
+
+ 	function sumArray(length){
+ 		
+ 		var sum = 0;
+
+		for (var i = 0; i < randomMass.length; i++) {
+			sum = sum + Number(randomMass[i]);
+   		}
+
+    	return sum;
+		}
+ 	
+    var sum = sumArray(randomMass);
+	document.write("b) Сумма чисел массива равна " + sum + "<br>");    
+
+	 /* c) Функция, которая на вход получает массив целых чисел, и в качестве
+	результата возвращает максимальное число. */
+	
+	function max(length){
+		
+        var nocount = true;
+        var result = Number.NEGATIVE_INFINITY;
+        var buf;
+    
+        for (var i = 0; i < randomMass.length; ++i) {
+            buf = randomMass[i];
+            if (buf != null && buf > result) {
+                result = buf;
+                if (nocount)
+                    nocount = false;
+            }
+        }
+        if (nocount) throw new Error("count == 0");
+        return result;
+	}
+
+	var m = max(randomMass);
+	document.write("c) Максимальное число массива равно " + m + "<br>");
+
+	/* d) Функция, которая на вход получает массив целых чисел, и в качестве
+	результата возвращает минимальное число */
+
+	function min(length){
+			
+	    var nocount = true;
+	    var result = Number.POSITIVE_INFINITY;
+	    var buf;
+	        for (var i = 0; i < randomMass.length; ++i) {
+	            buf = randomMass[i];
+	            if (buf != null && buf < result) {
+	                result = buf;
+	                if (nocount)
+	                nocount = false;
+	            }
+	        }
+	        if (nocount) throw new Error("count == 0");
+	        return result;
+	}
+
+	var min = min(randomMass);
+	document.write("d) Минимальное число массива равно " + min + "<br>");
+
+	/* f) Функция, которая на вход получает массив целых чисел, 
+	и в качестве результата возвращает только четные числа из этого массива. Чтобы определить четность числа, воспользуйтесь оператором для подсчета остатка от деления: x % 2.
+	Если остаток от деления числа на 2 равен 0, то число - четное. */
+
+	function evenElements(length) {
+        var res = [];
+    
+    	for(var i=0; i<randomMass.length; i++){
+        randomMass[i] % 2 == 0 ? res.push(randomMass[i]) : '';
+    	}
+   
+    return res;
+    }    
+	
+	var ch = evenElements(randomMass);
+	document.write("f) Четные числа массива: " + ch + "<br>");
+	
+	
+	
+</script>

@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+    var answer = parseInt(Math.random() * 100);
+    var user = "Игрок 1";
+
+    while (true){
+    var userAnswer = prompt(user + " Угадайте число от 0 до 100\n Для выхода нажмите 'z' ");
+    
+    if (userAnswer == "z")
+        break;
+    else
+        userAnswer = parseInt(userAnswer);
+    
+    if(userAnswer == answer){
+    	alert(user + " Поздравляю, вы угадали! ");
+    	break;
+    	// contune; - сразу переходим к следующей итерации
+    } else if(userAnswer > answer){
+    	alert(user + " Вы ввели слишком большое число.");
+           
+    } else if (userAnswer < answer) {
+    	alert(user + " Вы ввели слишком маленькое число.");
+            
+    } 
+
+    user = (user == "Игрок 1") ? "Игрок 2" : "Игрок 1"
+}
+    alert("Правильный ответ: " + answer);
+       
+
+    alert ("Игра окончена")
+    
+
+</script>

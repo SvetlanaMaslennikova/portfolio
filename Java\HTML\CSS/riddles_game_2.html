@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    
+    function askForRiddles(answer){
+    
+        for (var i = 0; i < answer.length; i++) {
+            
+            var userAnswer = prompt("Отгадайте загадку: " + answer[i][0]);
+            userAnswer = userAnswer.toLowerCase(); //преобразование строки в нижний регистр букв
+            
+            if (userAnswer == answer[i][1]) {
+                alert("Поздравляю, вы угадали!");
+                n = n + 1;
+            } else {
+                alert ("Вы не угадали!");
+            }
+        }   
+    }
+
+    var answer = prompt ("Два конца, два кольца, посредине гвоздик.");
+    answer = answer.toLowerCase(); //преобразование строки в нижний регистр букв
+    
+    if (answer == "ножницы") {
+        alert("Поздравляю, вы угадали!");
+        alert ("Игра окончена");
+    } else {
+        alert ("Вы не угадали!");
+        alert ("Решите ещё три загадки");
+    
+        var n = 0;
+        var easyAnsver = [
+            ["Летит, а не птица, воет, а не зверь.", "ветер"],
+            ["Разноцветное коромысло над рекой повисло.","радуга"],
+            ["Два братца в воду глядятся, век не сойдутся.", "берега"],
+        ];
+
+        askForRiddles(easyAnsver);
+        alert ("Игра окончена!");
+        alert ("Правильных ответов: " + n);
+    }
+    
+
+</script>
